@@ -1,0 +1,22 @@
+*{padding: 0;margin: 0;}
+ul{list-style: none;}
+a{text-decoration: none;}
+.fl{float:left}
+.fr{float:right}
+.clearfix::after{
+	content: "";
+	clear: both;
+	height: 0;
+	width: 0;
+	font-size: 0;
+	display: block;
+}
+/* 设置版心的宽度,居中 */
+.center{
+	width: 1200px;
+	margin: 0 auto;
+}
+/* 设置通栏的最小宽度是1920px */
+.long{
+	min-width: 1920px;
+}

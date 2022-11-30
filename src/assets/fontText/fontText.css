@@ -1,0 +1,12 @@
+@font-face {
+  font-family: 'PuHuiTiRegular';
+  src: url('./Alibaba-PuHuiTi-Regular.otf');
+}
+@font-face {
+  font-family: 'PuHuiTiBold';
+  src: url('./Alibaba-PuHuiTi-Bold.otf');
+}
+@font-face {
+  font-family: 'PuHuiTiMediu';
+  src: url('./Alibaba-PuHuiTi-Medium.otf');
+}
