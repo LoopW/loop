@@ -26,13 +26,13 @@
       </div>
       <div class="login-box-from">
         <el-form :model="loginForm" :rules="rules" ref="loginForm"  class="demo-ruleForm">
-          <el-form-item prop="username">
-            <el-input v-model="loginForm.username" placeholder="请输入用户名" size="medium">
+          <el-form-item prop="un">
+            <el-input v-model="loginForm.un" placeholder="请输入用户名" size="medium">
               <el-button slot="prepend" icon="el-icon-user"></el-button>
             </el-input>
           </el-form-item>
-          <el-form-item prop="password">
-            <el-input v-model="loginForm.password"  placeholder="请输入密码" size="medium">
+          <el-form-item prop="pw">
+            <el-input v-model="loginForm.pw"  placeholder="请输入密码" size="medium">
               <el-button slot="prepend" icon="el-icon-key"></el-button>
             </el-input>
           </el-form-item>
@@ -66,16 +66,16 @@ export default {
     return {
       loading: false, //登陆状态
       loginForm:{     // 登陆表单
-        username: '',
-        password: ''
+        un: '',
+        pw: ''
       },
       rules:{  //登陆验证规则
-        username:[
+        un:[
           { required: true, message: '请输入用户名', trigger: 'blur' },
           { min: 2, max: 18, message: '长度在 2 到 18 个字符', trigger: 'blur' },
           { validator: letterRule, trigger: 'blur' }
         ],
-        password: [
+        pw: [
           { required: true, message: '请输入密码', trigger: 'blur' },
           { min: 6, max: 16, message: '长度在 6 到 16 个字符', trigger: 'blur' },
           { validator: letterRule, trigger: 'blur' }
@@ -95,23 +95,28 @@ export default {
       });
     },
     login(){
-      http.Login(this.loginForm).then(res=>{
-        if(res.code===0){
-          //保存cookie
-          setCookie('token',res.data.token)
-          this.loading = false;
-          this.$message({
-            message:'登陆成功！',
-            type:'success'
-          })
+      // http.Login(this.loginForm).then(res=>{
+      //   if(res.code===0){
+      //     //保存cookie
+      //     setCookie('token',res.data.token)
+      //     this.loading = false;
+      //     this.$message({
+      //       message:'登陆成功！',
+      //       type:'success'
+      //     })
           //跳转到主页
           this.$router.push({
               path:'/HomePage'
-          })
-        }else{
-          this.loading = false;
-        }
-      })
+          }).catch(err=>{
+            console.log(err)})
+      //   }else{
+      //     this.$message({
+      //       message:res.message,
+      //       type:'warning'
+      //     })
+      //     this.loading = false;
+      //   }
+      // })
 
       // this.$store.dispatch('user/login',{username: this.loginForm.username})
       //     .then(()=>{
@@ -131,7 +136,7 @@ export default {
 }
 </script>
 
-<style scoped>
+<style scoped lang="scss">
 .login{
   width: 100%;
   height: 100%;
@@ -143,6 +148,9 @@ export default {
   background-size: 100% 100%;
   color: #cccccc; */
   position: relative;
+  .login-bg{
+
+  }
 }
 .login-bg{
   width: 100%;

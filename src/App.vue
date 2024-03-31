@@ -1,6 +1,7 @@
 <template>
   <div id="app">
-    <router-view v-if="$route.path === '/login'"/>
+    <router-view v-if="$route.path === '/login'||$route.path === '/demo' ||
+     $route.path === '/demo2'|| $route.path === '/demo3'|| $route.path === '/demo4'"/>
     <layout v-else />
   </div>
 </template>

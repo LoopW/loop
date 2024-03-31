@@ -38,6 +38,10 @@ export default {
     //监听路由变化触发方法
     '$route': 'createTag'
   },
+  mounted() {
+
+    // console.log(this.dynamicTags,'---------')
+  },
   methods: {
 
 
@@ -84,9 +88,7 @@ export default {
   created() {
 
   },
-  mounted() {
-    // console.log(this.dynamicTags,'---------')
-  }
+
 }
 </script>
 

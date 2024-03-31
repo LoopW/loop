@@ -1,8 +1,10 @@
-import httpServe from "@/utils/http/httpServe";
+
+import httpServe from "@/utils/request";
+let proxyUrl = '/service'
 export function Login(data){
     return httpServe.request(
         {
-            url:`/api/auth/login`,
+            url:`${proxyUrl}/jssj/users/loginTmp`,
             method:'post',
             data
         }

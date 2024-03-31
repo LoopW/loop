@@ -1,13 +1,13 @@
 import axios from "axios";
-// import { Toast } from 'vant';
+import { Toast } from 'vant';
 import { getToken } from "@/utils/auth";
 import { store } from "@/store";
-// import { Dialog } from 'vant';
+import { Dialog } from 'vant';
 import { router } from '@/router'
 
 // 创建实例
 const instance = axios.create({
-  baseURL: 'http://192.168.2.206:3000',  // process.env.VUE_APP_BASE_API
+  baseURL: '',  // process.env.VUE_APP_BASE_API
   timeout: 500000,
   headers: { "Content-Type": "application/json" },
 });
@@ -15,6 +15,7 @@ const instance = axios.create({
 // 添加请求拦截器
 instance.interceptors.request.use(
   (config) => {
+    // config包括请求的信息 包括baseurl 请求数据data 请求类型 超时 请求路径等信息
     // console.log(config)
     const token = getToken()
     if (token) {
@@ -30,7 +31,7 @@ instance.interceptors.request.use(
     //   duration: 0
     // });
     // 在发送请求之前做些什么
-    return config;
+    // return config;
   },
   (error) => {
     // 对请求错误做些什么
@@ -57,7 +58,10 @@ instance.interceptors.response.use(
   //   }
   //   return response.data
   // },
+
     response => {
+      // response包括 config发送的配置信息，返回的数据data status状态码等信息
+      // console.log(response)
       if (response.data.code == 401) {
         setTimeout(()=>{
           router.push("/page1")
